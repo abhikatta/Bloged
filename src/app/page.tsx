@@ -1,3 +1,4 @@
 export default function Home() {
-  return <div>Bloged</div>;
+  const login = true;
+  return <div></div>;
 }

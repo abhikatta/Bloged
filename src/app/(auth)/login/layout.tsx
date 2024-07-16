@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Bloged",
+  title: "Login | Bloged",
   description: "Write your great ideas and thoughts in the form of blogs.",
 };
 
@@ -14,8 +11,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <div className="w-full flex flex-col min-h-screen  items-center">
+      <div className="max-w-[85%] w-full">{children}</div>
+    </div>
   );
 }
