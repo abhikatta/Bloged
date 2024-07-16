@@ -9,3 +9,15 @@
     - 1. Dark mode
     - 2. Logout
     - 3. Delete acc
+
+after login/signup:
+
+- user see all random posts in home
+- create post: data:{
+  login id,
+
+}
+
+other stuff:
+
+- usePathname and types for styling active links
