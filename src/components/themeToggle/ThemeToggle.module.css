@@ -6,14 +6,11 @@
   align-items: center;
   justify-content: space-between;
   display: flex;
-  background-color: black;
   position: relative;
 }
 .ball {
   width: 15px;
   height: 15px;
-  background-color: white;
   border-radius: 50%;
   position: absolute;
-  left: 1px;
 }
