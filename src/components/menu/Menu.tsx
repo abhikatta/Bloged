@@ -59,7 +59,7 @@ const Menu = () => {
             return (
               <Link
                 key={index}
-                href={`/blog?cat=style${item.name}`}
+                href={`/blog?cat=${item.name.toLowerCase()}`}
                 className={`${styles.category} ${item.style}`}>
                 {item.name}
               </Link>
