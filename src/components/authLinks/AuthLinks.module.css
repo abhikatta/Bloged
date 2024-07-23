@@ -1,5 +1,7 @@
 .link {
   cursor: pointer;
+  font-size: 18px;
+  padding: 7px 12px;
 }
 .burger {
   width: 20px;
@@ -13,6 +15,13 @@
   width: 100%;
   height: 2px;
   background-color: var(--textColor);
+}
+.link:hover {
+  background-color: var(--textColor);
+
+  color: var(--bg);
+  transition-duration: 300ms;
+  border-radius: 10px;
 }
 .responsiveMenu {
   top: 100px;

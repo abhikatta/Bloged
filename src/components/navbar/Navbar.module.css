@@ -24,7 +24,24 @@
   display: flex;
   gap: 20px;
 }
-
+.link {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 7px 12px;
+  color: var(--textColor);
+  font-size: 18px;
+}
+.link:hover {
+  background-color: var(--textColor);
+  color: var(--bg);
+  transition-duration: 300ms;
+  border-radius: 10px;
+}
+.userImage {
+  border-radius: 50%;
+}
 @media screen and (max-width: 1280px) {
   .logo {
     font-size: 32px;

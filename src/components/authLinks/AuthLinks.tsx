@@ -2,8 +2,10 @@
 import Link from "next/link";
 import styles from "./AuthLinks.module.css";
 import { useState } from "react";
-const AuthLinks = () => {
-  const status = !false;
+import { Session } from "next-auth";
+const AuthLinks = ({ session }: { session: Session }) => {
+  const status = session?.user?.id;
+
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -16,7 +18,6 @@ const AuthLinks = () => {
           <Link href="/write" className={styles.link}>
             Write
           </Link>
-          <span className={styles.link}>Logout</span>
         </>
       )}
       <div className={styles.burger} onClick={() => setIsOpen((prev) => !prev)}>
@@ -34,7 +35,6 @@ const AuthLinks = () => {
           ) : (
             <>
               <Link href="/write">Write</Link>
-              <span className={styles.link}>Logout</span>
             </>
           )}
         </div>

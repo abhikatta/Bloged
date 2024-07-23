@@ -1,7 +1,13 @@
-import { signIn } from "../../../auth";
+import { redirect } from "next/navigation";
+import { auth, signIn } from "../../../auth";
 import styles from "./Login.module.css";
 
-const Login = () => {
+const Login = async () => {
+  const user = (await auth())?.user;
+  if (user) {
+    redirect("/");
+  }
+
   return (
     <div className={styles.container}>
       <form
