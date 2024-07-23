@@ -1,9 +1,16 @@
+import { signIn } from "../../../auth";
 import styles from "./Login.module.css";
+
 const Login = () => {
   return (
     <div className={styles.container}>
-      <button>Login with Google</button>
-      <button>Login with Github</button>
+      <form
+        action={async () => {
+          "use server";
+          await signIn("google");
+        }}>
+        <button type="submit">Login with Google</button>
+      </form>
     </div>
   );
 };
