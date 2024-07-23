@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px;
+  flex-direction: column;
+  gap: 100px;
+}
+.container button {
+  margin-top: 50px;
+  padding: 20px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.container button:first-child:hover {
+  background-color: #ff5555;
+  color: white;
+}
+
+.container button:last-child:hover {
+  background-color: black;
+  color: white;
+}
