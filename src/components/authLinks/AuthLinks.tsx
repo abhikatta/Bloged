@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "./AuthLinks.module.css";
 import { useState } from "react";
 const AuthLinks = () => {
-  const status = !false;
+  const status = false;
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
