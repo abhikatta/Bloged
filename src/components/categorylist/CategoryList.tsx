@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "./CategoryList.module.css";
 import Image from "next/image";
+import { Category } from "@prisma/client";
 const CategoryList = async () => {
   const res = await fetch("http://localhost:3000/api/categories", {
     cache: "no-store",
@@ -8,12 +9,7 @@ const CategoryList = async () => {
   if (!res.ok) {
     throw new Error("Failed to fetch Data!");
   }
-  const categories: {
-    slug: string;
-    title: string;
-    _id: string;
-    img: string;
-  }[] = await res.json();
+  const categories: Category[] = await res.json();
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Popular Categories</h1>
@@ -21,7 +17,7 @@ const CategoryList = async () => {
         {categories.length > 0 &&
           categories.map((item) => (
             <Link
-              key={item._id}
+              key={item.id}
               href={`/blog?cat=${item.slug}`}
               className={`${styles.category} ${styles[item.slug]}`}>
               {item.img && (
