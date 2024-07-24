@@ -6,7 +6,7 @@ const Featured = async () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>
-        <b>Hey {user.name.split(" ")[0]}, Checkout the featured blog! </b>
+        <b>Hey {user?.name.split(" ")[0]}, Checkout the featured blog! </b>
         Discover more blogs below
       </h1>
       <div className={styles.post}>
