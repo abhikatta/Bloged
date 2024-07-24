@@ -9,11 +9,7 @@ const AuthLinks = ({ session }: { session: Session }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      {status ? (
-        <Link href="/login" className={styles.link}>
-          Login
-        </Link>
-      ) : (
+      {status && (
         <>
           <Link href="/write" className={styles.link}>
             Write
@@ -30,9 +26,7 @@ const AuthLinks = ({ session }: { session: Session }) => {
           <Link href="/">Homepage</Link>
           <Link href="/contact">Contact</Link>
           <Link href="/about">About</Link>
-          {status ? (
-            <Link href="/login">Login</Link>
-          ) : (
+          {status && (
             <>
               <Link href="/write">Write</Link>
             </>

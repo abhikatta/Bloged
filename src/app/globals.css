@@ -36,7 +36,27 @@ a {
   margin-right: auto;
   padding: 0 80px;
 }
-
+.goHomeButton {
+  background-color: var(--bg);
+  color: var(--softTextColor);
+  border: none;
+  outline: none;
+  padding: 12px 8px;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all;
+  transition-duration: 300ms;
+}
+.goHomeButton:hover {
+  background-color: var(--softTextColor);
+  color: var(--bg);
+  padding: 12px 20px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+}
 @media screen and (max-width: 1536px) {
   .wrapper {
     max-width: 1366px;

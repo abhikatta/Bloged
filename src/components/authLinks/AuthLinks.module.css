@@ -1,7 +1,19 @@
 .link {
   cursor: pointer;
-  font-size: 18px;
+  background-color: transparent;
+  border: none;
+  outline: none;
   padding: 7px 12px;
+  color: var(--textColor);
+  font-size: 18px;
+  transition: all;
+  transition-duration: 300ms;
+}
+.link:hover {
+  padding: 20px 12px;
+  background-color: var(--textColor);
+  color: var(--bg);
+  border-radius: 10px;
 }
 .burger {
   width: 20px;
@@ -16,13 +28,7 @@
   height: 2px;
   background-color: var(--textColor);
 }
-.link:hover {
-  background-color: var(--textColor);
 
-  color: var(--bg);
-  transition-duration: 300ms;
-  border-radius: 10px;
-}
 .responsiveMenu {
   top: 100px;
   position: absolute;

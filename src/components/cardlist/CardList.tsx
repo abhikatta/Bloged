@@ -1,11 +1,19 @@
 import Pagination from "../pagination/Pagination";
 import styles from "./CardList.module.css";
 import Card from "../card/Card";
-import { Post } from "@prisma/client";
+import { Category, Post } from "@prisma/client";
 import { POSTS_PER_PAGE } from "@/constants";
-const CardList = async ({ page }: { page: number }) => {
+const CardList = async ({
+  page,
+  cat,
+}: {
+  page: number;
+  cat: Category["slug"];
+}) => {
   const res = await fetch(
-    `${process.env.NEXTAUTH_URL}/api/posts?page=${page}`,
+    `${process.env.NEXTAUTH_URL}/api/posts?page=${page}${
+      cat ? `cat=${cat}` : ""
+    }`,
     { cache: "no-cache" }
   );
   if (!res.ok) {
