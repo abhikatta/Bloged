@@ -1,4 +1,4 @@
-import CardList from "@/components/cardlist/CardList";
+import CardList from "@/components/cardList/CardList";
 import styles from "./blogPage.module.css";
 import Menu from "@/components/menu/Menu";
 const Page = ({ searchParams }: { searchParams: URLSearchParams }) => {
