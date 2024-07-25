@@ -2,65 +2,67 @@ import Menu from "@/components/menu/Menu";
 import styles from "./slugPage.module.css";
 import Image from "next/image";
 import Comments from "@/components/comments/Comments";
+import { Post, User } from "@prisma/client";
+import { API_BASE_URL } from "@/constants";
 
-const SinglePage = () => {
+interface PostWithUser extends Post {
+  user: User;
+}
+
+const SinglePage = async ({ params }: { params: { slug: string } }) => {
+  const resPost = await fetch(`${API_BASE_URL}/posts/${params.slug}`, {
+    cache: "no-cache",
+  });
+
+  if (!resPost.ok) {
+    throw new Error("Error fetching post!");
+  }
+
+  const post: PostWithUser = await resPost.json();
+
   return (
     <div className={styles.container}>
       <div className={styles.infoContainer}>
         <div className={styles.textContainer}>
-          <h1 className={styles.title}>
-            consectetur minim dolore voluptate cupidatat.
-          </h1>
+          <h1 className={styles.title}>{post.title}</h1>
           <div className={styles.user}>
             <div className={styles.userImgContainer}>
-              <Image
-                src="/p1.jpeg"
-                fill
-                className={styles.avatar}
-                alt="infoimage"
-              />
+              {post.user.image && (
+                <Image
+                  src={post.user.image}
+                  fill
+                  className={styles.avatar}
+                  alt={post.slug}
+                />
+              )}
             </div>
             <div className={styles.userTextContainer}>
-              <span className={styles.username}>John Doe</span>
-              <span className={styles.date}>10.1.2020</span>
+              <span className={styles.username}>{post.user.name}</span>
+              <span className={styles.date}>
+                {post.createdAt?.toString().split("T")[0].replaceAll("-", ".")}
+              </span>
             </div>
           </div>
         </div>
-        <div className={styles.imgContainer}>
-          <Image src="/p1.jpeg" fill className={styles.image} alt="infoimage" />
-        </div>
+        {post.img && (
+          <div className={styles.imgContainer}>
+            <Image
+              src={post.img}
+              fill
+              className={styles.image}
+              alt={post.slug}
+            />
+          </div>
+        )}
       </div>
       <div className={styles.content}>
         <div className={styles.post}>
-          <div className={styles.desc}>
-            <p>
-              Ad in nisi amet nisi laborum laborum pariatur esse dolore veniam.
-              Sint cupidatat nisi quis elit exercitation excepteur exercitation.
-              Sint ullamco consequat sint excepteur. Reprehenderit labore irure
-              occaecat quis consectetur. Aliqua reprehenderit mollit velit ipsum
-              laborum sunt reprehenderit dolore eu enim qui deserunt non.
-            </p>
-            <h2>
-              Fugiat Lorem ex Lorem dolore dolor deserunt commodo duis voluptate
-              ut.
-            </h2>
-            <p>
-              Ad in nisi amet nisi laborum laborum pariatur esse dolore veniam.
-              Sint cupidatat nisi quis elit exercitation excepteur exercitation.
-              Sint ullamco consequat sint excepteur. Reprehenderit labore irure
-              occaecat quis consectetur. Aliqua reprehenderit mollit velit ipsum
-              laborum sunt reprehenderit dolore eu enim qui deserunt non.
-            </p>
-            <p>
-              Ad in nisi amet nisi laborum laborum pariatur esse dolore veniam.
-              Sint cupidatat nisi quis elit exercitation excepteur exercitation.
-              Sint ullamco consequat sint excepteur. Reprehenderit labore irure
-              occaecat quis consectetur. Aliqua reprehenderit mollit velit ipsum
-              laborum sunt reprehenderit dolore eu enim qui deserunt non.
-            </p>
-          </div>
+          <div
+            className={styles.desc}
+            dangerouslySetInnerHTML={{ __html: post.desc }}
+          />
           <div className={styles.comments}>
-            <Comments />
+            <Comments postSlug={params.slug} />
           </div>
         </div>
         <Menu />

@@ -1,8 +1,9 @@
 import Link from "next/link";
 import styles from "./Comments.module.css";
 import Image from "next/image";
-const Comments = () => {
-  const status = true;
+import { auth } from "../../../auth";
+const Comments = async ({ postSlug }: { postSlug: string }) => {
+  const status = (await auth())?.user?.id || false;
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Comments</h1>

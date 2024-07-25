@@ -2,8 +2,9 @@ import Link from "next/link";
 import styles from "./CategoryList.module.css";
 import Image from "next/image";
 import { Category } from "@prisma/client";
+import { API_BASE_URL } from "@/constants";
 const CategoryList = async () => {
-  const res = await fetch("http://localhost:3000/api/categories", {
+  const res = await fetch(`${API_BASE_URL}/categories`, {
     cache: "no-store",
   });
   if (!res.ok) {
