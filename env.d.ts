@@ -5,5 +5,6 @@ declare namespace NodeJS {
     AUTH_GOOGLE_SECRET: string;
     NEXTAUTH_URL: string;
     DATABASE_URL: string;
+    FIREBASE_API_KEY: string;
   }
 }

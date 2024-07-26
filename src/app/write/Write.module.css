@@ -29,6 +29,10 @@
   cursor: pointer;
   border-radius: 20px;
 }
+.publish:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
 .button,
 .addButton {
   width: 36px;

@@ -6,7 +6,6 @@ export const GET = async (req: Request) => {
   const commentsUrl = new URL(req?.url);
   const { searchParams } = commentsUrl;
   const slug = searchParams.get("postSlug");
-  console.log(slug);
 
   try {
     const comments = await prisma.comment.findMany({
@@ -24,6 +23,7 @@ export const GET = async (req: Request) => {
   }
 };
 
+// write comment
 export const POST = async (req: Request) => {
   const user = (await auth())?.user;
   if (!user) {

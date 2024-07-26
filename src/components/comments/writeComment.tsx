@@ -5,7 +5,7 @@ import { revalidateData } from "./CommentsUtils";
 
 export const addComment = async (desc: string, postSlug: string) => {
   try {
-    await fetch(`api/comments`, {
+    await fetch(`/api/comments`, {
       method: "POST",
       body: JSON.stringify({ desc, postSlug }),
     });
