@@ -6,7 +6,7 @@ import { auth } from "../../../../auth";
 export const GET = async (req: Request) => {
   const { searchParams } = new URL(req.url);
   const page = parseInt(searchParams.get("page")) || 1;
-  const cat = searchParams.get("cat") || "";
+  const cat = searchParams?.get("cat") || "";
   try {
     const [posts, count] = await prisma.$transaction([
       prisma.post.findMany({
@@ -16,8 +16,13 @@ export const GET = async (req: Request) => {
           ...(cat && { catSlug: cat }),
         },
       }),
-      prisma.post.count({ where: { ...(cat && { catSlug: cat }) } }),
+      prisma.post.count({
+        where: {
+          ...(cat && { catSlug: cat }),
+        },
+      }),
     ]);
+
     return new NextResponse(JSON.stringify({ posts, count }), { status: 200 });
   } catch (error) {
     console.error(error);
@@ -44,8 +49,6 @@ export const POST = async (req: Request) => {
     });
     return new NextResponse(JSON.stringify(createComment), { status: 200 });
   } catch (error) {
-    console.log(error);
-
     return new NextResponse(
       JSON.stringify({ message: "Something went wrong!" }),
       { status: 500 }

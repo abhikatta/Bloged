@@ -10,10 +10,17 @@ const CardList = async ({
   page: number;
   cat: Category["slug"];
 }) => {
-  const res = await fetch(
-    `${API_BASE_URL}/posts?page=${page}${cat ? `cat=${cat}` : ""}`,
-    { cache: "no-cache" }
-  );
+  console.log("cat from cardlist", cat);
+  const searchParams = new URLSearchParams();
+  searchParams.append("page", String(page));
+  searchParams.append("cat", cat);
+
+  const url = new URL(`${API_BASE_URL}/posts`);
+  url.search = searchParams.toString();
+
+  const res = await fetch(url.toString(), {
+    cache: "no-cache",
+  });
   if (!res.ok) {
     throw new Error("Error getting posts!");
   }
