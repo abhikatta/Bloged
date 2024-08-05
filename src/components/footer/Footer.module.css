@@ -44,6 +44,10 @@
   font-weight: bold;
 }
 
+.link:hover {
+  text-decoration: var(--softTextColor) wavy underline;
+  text-underline-offset: 5px;
+}
 @media screen and (max-width: 1024px) {
   .links {
     gap: 50px;
