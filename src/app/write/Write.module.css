@@ -5,6 +5,7 @@
   position: relative;
 }
 .textArea {
+  margin-top: 20px;
   width: 100%;
 }
 .input {
@@ -33,8 +34,7 @@
   opacity: 0.3;
   cursor: not-allowed;
 }
-.button,
-.addButton {
+.button {
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -52,7 +52,7 @@
   z-index: 999;
   left: 50px;
 }
-.addButton {
+.button {
   border-color: #1a8917;
 }
 

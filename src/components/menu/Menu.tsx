@@ -24,7 +24,7 @@ const Menu = async () => {
               <Link key={index} href="/" className={styles.item}>
                 <div className={styles.textContainer}>
                   <span className={`${styles.popular} ${styles[item.catSlug]}`}>
-                    {item.catSlug}
+                    {item.catSlug.toUpperCase()}
                   </span>
                   <h3 className={styles.postTitle}>{item.title}</h3>
                   <div className={styles.detail}>
