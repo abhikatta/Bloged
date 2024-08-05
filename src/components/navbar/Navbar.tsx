@@ -25,10 +25,10 @@ const Navbar = async () => {
         <Link className={styles.link} href="/">
           Homepage
         </Link>
-        <Link className={styles.link} href="/contact">
+        <Link className={styles.link} href="https://github.com/abhikatta">
           Contact
         </Link>
-        <Link className={styles.link} href="/about">
+        <Link className={styles.link} href="https://github.com/abhikatta">
           About
         </Link>
         <AuthLinks session={session} />

@@ -3,10 +3,12 @@ import { useRouter } from "next/navigation";
 import styles from "./Pagination.module.css";
 const Pagination = ({
   page,
+  catSlug,
   hasNext,
   hasPrev,
 }: {
   page: number;
+  catSlug?: string;
   hasNext: boolean;
   hasPrev: boolean;
 }) => {
@@ -16,14 +18,16 @@ const Pagination = ({
     <div className={styles.container}>
       <button
         disabled={!hasPrev}
-        onClick={() => router.push(`?page=${page - 1}`)}
-        className={styles.button}>
+        onClick={() => router.push(`?page=${page - 1}${catSlug ? `?cat=${catSlug}` : ""}`)}
+        className={styles.button}
+      >
         Previous
       </button>
       <button
         disabled={!hasNext}
-        onClick={() => router.push(`?page=${page + 1}`)}
-        className={styles.button}>
+        onClick={() => router.push(`?page=${page + 1}${catSlug ? `?cat=${catSlug}` : ""}`)}
+        className={styles.button}
+      >
         Next
       </button>
     </div>

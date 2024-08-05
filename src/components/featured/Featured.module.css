@@ -39,8 +39,14 @@
   border: none;
   border-radius: 5px;
   width: max-content;
+  transition: all;
+  cursor: pointer;
+  transition-duration: 300ms;
 }
-
+.button:hover {
+  transform: translate3d(0, -5px, 0);
+  box-shadow: 5px 5px var(--textColor);
+}
 @media screen and (max-width: 1280px) {
   .title {
     font-size: 72px;

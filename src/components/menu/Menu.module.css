@@ -21,6 +21,11 @@
   display: flex;
   align-items: center;
   gap: 20px;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+.item:hover {
+  box-shadow: 2px 2px 10px var(--softBg);
 }
 .imgContainer {
   flex: 1;
@@ -99,6 +104,12 @@
   padding: 10px 25px;
   border-radius: 10px;
   font-size: 14px;
+  transition: all;
+  transition-duration: 300ms;
+}
+.category:hover {
+  transform: translate3d(0, -5px, 0);
+  box-shadow: 5px 5px var(--textColor);
 }
 .category.style {
   background-color: #57c4ff31;

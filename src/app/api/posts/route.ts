@@ -15,6 +15,9 @@ export const GET = async (req: Request) => {
         where: {
           ...(cat && { catSlug: cat }),
         },
+        orderBy: {
+          createdAt: "desc",
+        },
       }),
       prisma.post.count({
         where: {
@@ -36,10 +39,9 @@ export const GET = async (req: Request) => {
 export const POST = async (req: Request) => {
   const user = (await auth())?.user;
   if (!user) {
-    return new NextResponse(
-      JSON.stringify({ message: "Please Login to write a post" }),
-      { status: 401 }
-    );
+    return new NextResponse(JSON.stringify({ message: "Please Login to write a post" }), {
+      status: 401,
+    });
   }
 
   try {
@@ -49,9 +51,6 @@ export const POST = async (req: Request) => {
     });
     return new NextResponse(JSON.stringify(createComment), { status: 200 });
   } catch (error) {
-    return new NextResponse(
-      JSON.stringify({ message: "Something went wrong!" }),
-      { status: 500 }
-    );
+    return new NextResponse(JSON.stringify({ message: "Something went wrong!" }), { status: 500 });
   }
 };

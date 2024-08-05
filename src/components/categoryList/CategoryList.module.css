@@ -17,6 +17,12 @@
   width: 15%;
   height: 80px;
   border-radius: 10px;
+  transition: all;
+  transition-duration: 300ms;
+}
+.category:hover {
+  transform: translate3d(0, -10px, 0);
+  box-shadow: 10px 10px var(--textColor);
 }
 .category.style {
   background-color: #57c4ff31;
