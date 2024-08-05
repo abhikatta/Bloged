@@ -8,7 +8,9 @@ const Page = ({ searchParams }: { searchParams: URLSearchParams }) => {
   const cat = urlSearchParams.get("cat");
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Style Blog</h1>
+      <h1 className={styles.title}>
+        {cat.slice(0, 1).toUpperCase() + cat.slice(1)} Blogs
+      </h1>
       <div className={styles.content}>
         <CardList page={page} cat={cat} />
         <Menu />
