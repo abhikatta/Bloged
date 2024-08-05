@@ -69,7 +69,14 @@
 .editorspick.culture {
   background-color: #ffb14f;
 }
-
+.popular.style,
+.editorspick.food {
+  background-color: #717fb8;
+}
+.popular.coding,
+.editorspick.food {
+  background-color: #45b5c1;
+}
 .popular.food,
 .editorspick.food {
   background-color: #7fb881;

@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "./Card.module.css";
 import Link from "next/link";
 import { Post } from "@prisma/client";
+import { FormatDate } from "@/utils/utils";
 
 const Card = ({ key, data }: { key: string | number; data: Post }) => {
   return (
@@ -13,20 +14,13 @@ const Card = ({ key, data }: { key: string | number; data: Post }) => {
       )}
       <div className={styles.textContainer}>
         <div className={styles.detail}>
-          <span className={styles.date}>
-            {data.createdAt.toString().split("T")[0].replaceAll("-", ".")}
-          </span>
-          <span className={styles.category}>
-            {" "}
-            - {data.catSlug.toUpperCase()}
-          </span>
+          <span className={styles.date}>{FormatDate(data.createdAt)}</span>
+          <span className={styles.category}> - {data.catSlug.toUpperCase()}</span>
         </div>
         <Link href={`/posts/${data.slug}`}>
           <h1>{data.title}</h1>
         </Link>
-        <p
-          className={styles.desc}
-          dangerouslySetInnerHTML={{ __html: data.desc }}></p>
+        <p className={styles.desc} dangerouslySetInnerHTML={{ __html: data.desc }}></p>
         <Link href={`/posts/${data.slug}`} className={styles.link}>
           Read More
         </Link>

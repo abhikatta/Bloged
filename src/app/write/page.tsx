@@ -7,7 +7,6 @@ import "react-quill/dist/quill.bubble.css";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from "../../../firebase";
 import { Category } from "@prisma/client";
-import { randomUUID } from "crypto";
 import { nanoid } from "nanoid";
 
 const Write = () => {
@@ -92,7 +91,8 @@ const Write = () => {
       <select
         id="category"
         onChange={(e) => setSelectedCategory(e.target.value)}
-        className={styles.select}>
+        className={styles.select}
+      >
         {categories.map((category) => (
           <option key={category.slug} value={category.slug}>
             {category.title}
@@ -101,9 +101,7 @@ const Write = () => {
       </select>
 
       <div className={styles.editor}>
-        <button
-          onClick={() => setIsEditOptions((prev) => !prev)}
-          className={styles.button}>
+        <button onClick={() => setIsEditOptions((prev) => !prev)} className={styles.button}>
           <Image src="/plus.png" alt="" width={16} height={16} />
         </button>
 
@@ -130,10 +128,7 @@ const Write = () => {
           placeholder="Write something..."
         />
       </div>
-      <button
-        onClick={handleSubmit}
-        disabled={!isPublishEnabled}
-        className={styles.publish}>
+      <button onClick={handleSubmit} disabled={!isPublishEnabled} className={styles.publish}>
         Publish
       </button>
     </div>
