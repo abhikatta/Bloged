@@ -1,6 +1,5 @@
 import Link from "next/link";
 import styles from "./Menu.module.css";
-import Image from "next/image";
 import { API_BASE_URL } from "@/constants";
 import { PostWithUser } from "@/types";
 import { FormatDate } from "@/utils/utils";

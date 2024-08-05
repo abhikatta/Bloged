@@ -55,3 +55,16 @@
 .addButton {
   border-color: #1a8917;
 }
+
+.select,
+.option {
+  margin: 10px 0 0;
+  padding: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background-color: var(--softTextColor);
+  color: var(--softBg);
+}

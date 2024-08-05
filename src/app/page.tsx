@@ -5,11 +5,7 @@ import CardList from "@/components/cardList/CardList";
 import Menu from "@/components/menu/Menu";
 import { URLSearchParams } from "url";
 
-export default function Home({
-  searchParams,
-}: {
-  searchParams: URLSearchParams;
-}) {
+export default function Home({ searchParams }: { searchParams: URLSearchParams }) {
   const urlSearchParams = new URLSearchParams(searchParams);
   const page = parseInt(urlSearchParams.get("page")) || 1;
   const cat = urlSearchParams.get("cat");

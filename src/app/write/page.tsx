@@ -8,9 +8,9 @@ import { storage } from "../../../firebase";
 import { Category } from "@prisma/client";
 import { nanoid } from "nanoid";
 import dynamic from "next/dynamic";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const Write = () => {
-  const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
   const [isEditOptions, setIsEditOptions] = useState(false);
   const [image, setImage] = useState<File | null>(null);
   const [value, setValue] = useState("");
@@ -26,8 +26,6 @@ const Write = () => {
         });
 
         const categories: Category[] = await res.json();
-        console.log(categories);
-
         setCategories(categories);
       } catch (error) {
         console.log(error);
@@ -39,18 +37,12 @@ const Write = () => {
 
       const uploadTask = uploadBytesResumable(storageRef, image);
 
-      uploadTask.on(
-        "state_changed",
-
-        (error) => {
-          console.log("Firebase error:", error);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            setDownloadUrl(downloadURL);
-          });
-        }
-      );
+      uploadTask.on("state_changed", () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          console.log(downloadURL);
+          setDownloadUrl(downloadURL);
+        });
+      });
     };
 
     image && upload();
@@ -71,8 +63,9 @@ const Write = () => {
   };
 
   const isPublishEnabled = useMemo(() => {
-    return title.trim() !== "" && (value.trim() !== "<p><br></p>" || !value);
+    return title.trim() !== "" && value.trim() !== "<p><br></p>";
   }, [title, value]);
+
   return (
     <div className={styles.container}>
       <input
@@ -88,14 +81,17 @@ const Write = () => {
         onChange={(e) => setImage(e.target.files[0])}
         style={{ display: "none" }}
       />
-      <label htmlFor="category">Category</label>
       <select
         id="category"
+        value={selectedCategory}
         onChange={(e) => setSelectedCategory(e.target.value)}
         className={styles.select}
       >
+        <option value="" disabled hidden>
+          Select a Category
+        </option>
         {categories.map((category) => (
-          <option key={category.slug} value={category.slug}>
+          <option key={category.slug} className={styles.option} value={category.slug}>
             {category.title}
           </option>
         ))}
