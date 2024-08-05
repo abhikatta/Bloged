@@ -27,7 +27,7 @@ const CardList = async ({ page, cat }: { page: number; cat: Category["slug"] }) 
       <div className={styles.posts}>
         {count > 0 && posts.map((data, index) => <Card key={index} data={data} />)}
       </div>
-      <Pagination page={page} hasNext={hasNext} hasPrev={hasPrev} />
+      <Pagination page={page} catSlug={cat} hasNext={hasNext} hasPrev={hasPrev} />
     </div>
   );
 };
