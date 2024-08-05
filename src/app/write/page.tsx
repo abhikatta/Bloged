@@ -2,14 +2,15 @@
 import Image from "next/image";
 import styles from "./Write.module.css";
 import { useEffect, useMemo, useState } from "react";
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.bubble.css";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from "../../../firebase";
 import { Category } from "@prisma/client";
 import { nanoid } from "nanoid";
+import dynamic from "next/dynamic";
 
 const Write = () => {
+  const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
   const [isEditOptions, setIsEditOptions] = useState(false);
   const [image, setImage] = useState<File | null>(null);
   const [value, setValue] = useState("");
