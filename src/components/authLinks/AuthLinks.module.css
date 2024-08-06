@@ -5,7 +5,7 @@
   outline: none;
   padding: 7px 12px;
   color: var(--textColor);
-  font-size: 18px;
+  font-size: 30px;
   transition: all;
   transition-duration: 300ms;
 }
@@ -28,7 +28,16 @@
   height: 2px;
   background-color: var(--textColor);
 }
-
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.userImage {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
 .responsiveMenu {
   top: 100px;
   position: absolute;
@@ -38,16 +47,22 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  z-index: 999;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 50px;
-  font-size: 36px;
+  font-size: 34px;
 }
-@media screen and (max-width: 640px) {
+.link.logoutButton {
+  border-radius: 10px;
+  background-color: #edc0c0;
+  color: crimson;
+}
+@media screen and (max-width: 1024px) {
   .burger {
     display: flex;
   }
   .link {
-    display: none;
+    font-size: 30px;
   }
 }

@@ -3,9 +3,10 @@ import Link from "next/link";
 import styles from "./AuthLinks.module.css";
 import { useState } from "react";
 import { Session } from "next-auth";
-const AuthLinks = ({ session }: { session: Session }) => {
+import Image from "next/image";
+const AuthLinks = ({ session, logout }: { session: Session; logout: () => void }) => {
   const status = session?.user?.id;
-
+  const user = session?.user;
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -26,10 +27,24 @@ const AuthLinks = ({ session }: { session: Session }) => {
           <Link href="/">Homepage</Link>
           <Link href="/contact">Contact</Link>
           <Link href="/about">About</Link>
-          {status && (
-            <>
-              <Link href="/write">Write</Link>
-            </>
+          {user?.image && (
+            <div className={styles.user}>
+              <Image
+                src={user?.image}
+                alt="google user image"
+                width={20}
+                height={20}
+                className={styles.userImage}
+              />
+              <span>{user?.name}</span>
+            </div>
+          )}
+          {user ? (
+            <button className={`${styles.link} ${styles.logoutButton}`} onClick={() => logout()}>
+              Logout
+            </button>
+          ) : (
+            <Link href="/login">Login</Link>
           )}
         </div>
       )}
