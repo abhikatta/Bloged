@@ -26,17 +26,19 @@ const Navbar = async () => {
         <Link className={styles.link} href="https://github.com/abhikatta">
           About
         </Link>
-        <AuthLinks session={session} />
-        {user?.image && (
-          <Image
-            src={user.image}
-            alt="google user image"
-            width={20}
-            height={20}
-            className={styles.userImage}
-          />
-        )}
-        <span>{user?.name}</span>
+        <AuthLinks session={session} logout={handleSignout} />
+        <div className={styles.user}>
+          {user?.image && (
+            <Image
+              src={user.image}
+              alt="google user image"
+              width={20}
+              height={20}
+              className={styles.userImage}
+            />
+          )}
+          <span>{user?.name}</span>
+        </div>
         {user ? (
           <form action={handleSignout}>
             <button type="submit" className={styles.link}>

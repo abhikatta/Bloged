@@ -20,7 +20,10 @@ const Card = ({ key, data }: { key: string | number; data: Post }) => {
         <Link href={`/posts/${data.slug}`}>
           <h1>{data.title}</h1>
         </Link>
-        <p className={styles.desc} dangerouslySetInnerHTML={{ __html: data.desc }}></p>
+        <p
+          className={styles.desc}
+          dangerouslySetInnerHTML={{ __html: `${data.desc.slice(0, 200)}...` }}
+        ></p>
         <Link href={`/posts/${data.slug}`} className={styles.link}>
           Read More
         </Link>
