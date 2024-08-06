@@ -13,6 +13,7 @@
   font-size: 64px;
   border: none;
   outline: none;
+  max-width: 100%;
   background-color: var(--bg);
   color: var(--textColor);
 }
@@ -67,4 +68,46 @@
   border-radius: 10px;
   background-color: var(--softTextColor);
   color: var(--softBg);
+}
+@media screen and (max-width: 768px) {
+  .publish {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #1a8917;
+    color: white;
+    cursor: pointer;
+    border-radius: 20px;
+  }
+  .select,
+  .option {
+    margin: 0 0 20px;
+  }
+}
+@media screen and (max-width: 640px) {
+  .publish {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #1a8917;
+    color: white;
+    cursor: pointer;
+    border-radius: 20px;
+  }
+  .add {
+    display: flex;
+    gap: 20px;
+    background-color: var(--bg);
+    position: absolute;
+    z-index: 999;
+    left: 0px;
+  }
+  .select,
+  .option {
+    margin: 5px 0 20px;
+  }
 }
