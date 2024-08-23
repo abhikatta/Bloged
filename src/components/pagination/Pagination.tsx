@@ -13,19 +13,32 @@ const Pagination = ({
   hasPrev: boolean;
 }) => {
   const router = useRouter();
+  const searchParams = new URLSearchParams();
 
   return (
     <div className={styles.container}>
       <button
         disabled={!hasPrev}
-        onClick={() => router.push(`?page=${page - 1}${catSlug ? `?cat=${catSlug}` : ""}`)}
+        onClick={() => {
+          searchParams.set("page", String(page - 1));
+          if (catSlug) {
+            searchParams.set("cat", catSlug);
+          }
+          router.push(`/blog?${searchParams.toString()}`);
+        }}
         className={styles.button}
       >
         Previous
       </button>
       <button
         disabled={!hasNext}
-        onClick={() => router.push(`?page=${page + 1}${catSlug ? `?cat=${catSlug}` : ""}`)}
+        onClick={() => {
+          searchParams.set("page", String(page + 1));
+          if (catSlug) {
+            searchParams.set("cat", catSlug);
+          }
+          router.push(`/blog?${searchParams.toString()}`);
+        }}
         className={styles.button}
       >
         Next

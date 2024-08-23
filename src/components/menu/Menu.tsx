@@ -21,7 +21,7 @@ const Menu = async () => {
         <div className={styles.items}>
           {popularPosts.map((item, index) => {
             return (
-              <Link key={index} href="/" className={styles.item}>
+              <Link key={index} href={`/posts/${item.slug}`} className={styles.item}>
                 <div className={styles.textContainer}>
                   <span className={`${styles.popular} ${styles[item.catSlug]}`}>
                     {item.catSlug.toUpperCase()}

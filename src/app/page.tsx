@@ -4,6 +4,8 @@ import CategoryList from "@/components/categoryList/CategoryList";
 import CardList from "@/components/cardList/CardList";
 import Menu from "@/components/menu/Menu";
 import { URLSearchParams } from "url";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 export default function Home({ searchParams }: { searchParams: URLSearchParams }) {
   const urlSearchParams = new URLSearchParams(searchParams);
@@ -14,7 +16,9 @@ export default function Home({ searchParams }: { searchParams: URLSearchParams }
       <Featured />
       <CategoryList />
       <div className={styles.content}>
-        <CardList page={page} cat={cat} />
+        <Suspense fallback={<Loading />}>
+          <CardList page={page} cat={cat} />
+        </Suspense>
         <Menu />
       </div>
     </div>
